@@ -6,5 +6,16 @@ type Props = {
 };
 
 export const ThirdwebProviders: FC<Props> = ({ children }) => {
-  return <ThirdwebProvider activeChain="ethereum">{children}</ThirdwebProvider>;
+  return (
+    <ThirdwebProvider
+      activeChain="ethereum"
+      clientId=""
+      authConfig={{
+        domain: '',
+        authUrl: '',
+      }}
+    >
+      {children}
+    </ThirdwebProvider>
+  );
 };
