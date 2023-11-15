@@ -14,26 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm@7.28.0
-          pnpm install
+      - name: Setup Bun
+        run: oven-sh/setup-bun@v1
+        with: bun-version: latest
 
-      - name: Build
-        run: pnpm run build
-
-      - name: Run ESLint
-        run: pnpm dlx eslint ./src --ext .js,.jsx,.ts,.tsx
-        continue-on-error: true
+      - name: Install dependencies
+        run: bun install
 
       - name: Run ESLint
-        run:
-          pnpm dlx eslint ./src --ext .js,.jsx,.ts,.tsx --format @microsoft/eslint-formatter-sarif
-          --output-file eslint-results.sarif
+        run: bunx eslint ./app --ext .js,.jsx,.ts,.tsx
         continue-on-error: true
-
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: eslint-results.sarif
-          wait-for-processing: true
