@@ -3,19 +3,20 @@
 ## Getting Started
 
 **install dependencies**
+※ 権限が必要と言われるのでとりあえず`sudo`で実行（原因不明いつか直す）
 
 ```zsh
-npm install
+sudo npm install
 ```
 
 **start the Dev server**
 
 ```zsh
-npm dev
+npm run dev
 ```
 
 **build the project**
 
 ```zsh
-npm build
+npm run build
 ```
