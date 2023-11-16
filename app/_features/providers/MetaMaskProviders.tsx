@@ -1,13 +1,12 @@
 import { FC, ReactNode } from 'react';
 import { MetaMaskProvider } from '@metamask/sdk-react';
+import { env } from '../env/env';
 
 type Props = {
   children: ReactNode;
 };
 
 export const MetamaskProviders: FC<Props> = ({ children }) => {
-  const url = window.location.host;
-
   return (
     <MetaMaskProvider
       debug={false}
@@ -15,7 +14,7 @@ export const MetamaskProviders: FC<Props> = ({ children }) => {
         checkInstallationImmediately: false,
         dappMetadata: {
           name: 'web-100',
-          url,
+          url: env.THIRDWEB_AUTH_DOMAIN,
         },
       }}
     >
