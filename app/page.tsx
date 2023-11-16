@@ -3,7 +3,7 @@
 import React, { FC } from 'react';
 import Header from './components/Header';
 import About from './components/About';
-import Team from './components/Team';
+import Car from './components/Car';
 import Contact from './components/Contact';
 import { useRouter } from 'next/navigation';
 import { Button } from '@material-tailwind/react';
@@ -24,9 +24,9 @@ const Home: FC = () => {
       <section id="about">
         <About />
       </section>
-      <section id="team">
+      <section id="car">
         <h1>分割購入できる車一覧</h1>
-        <Team />
+        <Car />
       </section>
       <section id="contact">
         <Contact />
