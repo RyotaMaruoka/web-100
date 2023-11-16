@@ -12,7 +12,7 @@ const Home: FC = () => {
   const router = useRouter();
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'lightblue' }}>
       <Header />
       <Button
         onClick={() => {
@@ -25,6 +25,7 @@ const Home: FC = () => {
         <About />
       </section>
       <section id="team">
+        <h1>分割購入できる車一覧</h1>
         <Team />
       </section>
       <section id="contact">
