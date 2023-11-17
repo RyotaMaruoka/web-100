@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <Providers>
-        <body>{children}</body>
+        <body className=bg-blue-200'>{children}</body>
       </Providers>
     </html>
   );
