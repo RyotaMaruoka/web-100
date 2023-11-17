@@ -1,8 +1,11 @@
 'use client';
+
 import React from 'react';
-import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useParams, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+
+import { Typography, Button } from '@material-tailwind/react';
 
 const membersData: { [key: string]: { name: string; image: string; description: string } } = {
   '1': {
@@ -28,19 +31,23 @@ const MemberDetail = () => {
   const member = membersData[id];
 
   return (
-    <div>
+    <div className='m-16 p-8 bg-white'>
       {member && (
-        <>
-          <img src={member.image} alt={`Member ${id}`} />
-          <h3>{member.name}</h3>
-          <p>{member.description}</p>
-          <p>
-            操作系,本革巻き3本スポークステアリングホイール（シルバー塗装）,シート,フロントシート（ヘッドレストセパレート型）空調,オートエアコン（電動インバーターコンプレッサー）＆クリーンエアフィルター（花粉除去＆脱臭機能付）
-          </p>
-          <Link href="/purchase">
-            <button>購入する</button>
-          </Link>
-        </>
+        <div>
+          <div className='flex flex-row items-center'>
+            <Image src={member.image} alt={`Member ${id}`} width={500} height={500} />
+            <div>
+              <Typography variant='h2' className='mb-8'>{member.name}</Typography>
+              <Typography variant='h4' className='mb-8'>{member.description}</Typography>
+              <Typography  className='mb-8'>{member.description}</Typography>
+            </div>
+          </div>
+          <div className='flex justify-center items-center'>
+            <Link href="/purchase" className='items-center'>
+              <Button>購入する</Button>
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );
