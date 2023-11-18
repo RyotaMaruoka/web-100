@@ -19,7 +19,7 @@ const Header = () => {
   const { isLogin } = user;
 
   return (
-    <Navbar color="light-blue" fullWidth className="bg-gradient-to-r">
+    <Navbar fullWidth className="bg-gray-900 bg-gradient-to-r border-none">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/">
           <Image src="/060_vehicle-for-hire.png" alt="Logo" width={100} height={100} />
@@ -39,7 +39,7 @@ const Header = () => {
             <Link href="#contact">
               <Typography color="black" variant="h6">
                 Contact
-              </Typography>
+              </Typography> 
             </Link>
           </div>
           {isLogin ? (

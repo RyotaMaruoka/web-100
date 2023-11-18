@@ -13,10 +13,10 @@ const Home: FC = () => {
 
   return (
     <div>
-      <div className='bg-blue-300'>
+      <div>
         <Header />
       </div>
-      <div className='p-8'>
+      <div className='mb-16'>
         <div id="about">
           <About />
         </div>
