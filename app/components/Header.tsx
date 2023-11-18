@@ -39,7 +39,7 @@ const Header = () => {
             <Link href="#contact">
               <Typography color="black" variant="h6">
                 Contact
-              </Typography> 
+              </Typography>
             </Link>
           </div>
           {isLogin ? (

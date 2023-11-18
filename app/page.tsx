@@ -6,7 +6,7 @@ import Header from './components/Header';
 import About from './components/About';
 import Car from './components/Car';
 import Contact from './components/Contact';
-
+import Footer from './components/Footer';
 
 
 const Home: FC = () => {
@@ -27,6 +27,7 @@ const Home: FC = () => {
           <Contact />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
