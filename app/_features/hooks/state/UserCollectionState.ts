@@ -7,6 +7,7 @@ const initialUserCollection: AuthUsersCollectionType = {
   chainId: null,
   mail: '',
   name: '',
+  isHavingNFT: false,
 };
 
 /**
