@@ -1,4 +1,5 @@
 'use client';
+
 import { NextPage } from 'next';
 import { userCollectionState } from '../_features/hooks/state/UserCollectionState';
 import { useRecoilState } from 'recoil';
@@ -12,6 +13,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import SearchIcon from '@mui/icons-material/Search';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import HomeIcon from '@mui/icons-material/Home';
+import { useRouter } from 'next/navigation';
 
 const menuArray: {
   label: string;
@@ -36,6 +39,7 @@ const menuArray: {
 ];
 
 const ConsolePage: NextPage = () => {
+  const router = useRouter();
   const [user, setUser] = useRecoilState(userCollectionState);
   const [isBuyModalOpen, setIsBuyModalOpen] = useState<boolean>(false);
   const handleDisclose = () => {
@@ -46,7 +50,8 @@ const ConsolePage: NextPage = () => {
     setIsSnipperOpen((prev) => !prev);
   };
 
-  const isHavingNFT = user.isHavingNFT;
+  // const isHavingNFT = user.isHavingNFT;
+  const isHavingNFT = true;
 
   return (
     <>
@@ -60,7 +65,7 @@ const ConsolePage: NextPage = () => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          style={{ marginBottom: '30px' }}
+          style={{ marginTop: 20, marginBottom: 30 }}
         >
           <Typography variant="h4">Your NFT Key</Typography>
           <Stack direction="row" spacing={1}>
@@ -72,11 +77,14 @@ const ConsolePage: NextPage = () => {
               <AccountCircleIcon />
             </IconButton>
             <IconButton
+              onClick={() => {
+                router.push('/');
+              }}
               style={{
                 borderRadius: '10px',
               }}
             >
-              <SettingsIcon />
+              <HomeIcon />
             </IconButton>
           </Stack>
         </Stack>
@@ -92,7 +100,17 @@ const ConsolePage: NextPage = () => {
           <></>
         ) : (
           <Stack alignItems="center" sx={{ mt: 3 }}>
-            <Button onClick={handleDisclose}>NFT Key を購入する</Button>
+            <Button
+              onClick={() => {
+                setUser({
+                  ...user,
+                  isHavingNFT: true,
+                });
+                handleDisclose;
+              }}
+            >
+              NFT Key を購入する
+            </Button>
           </Stack>
         )}
       </Container>
