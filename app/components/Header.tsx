@@ -9,21 +9,21 @@ const Header = () => {
   const login = true;  // 一旦
 
   return (
-    <Navbar color="light-blue" fullWidth className="bg-gradient-to-r">
+    <Navbar fullWidth className="bg-gray-900 bg-gradient-to-r border-none">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/">
           <Image src="/060_vehicle-for-hire.png" alt="Logo" width={100} height={100} />
         </Link>
-        <div className='flex gap-4 items-center'>
+        <div className='flex gap-4 items-center '>
           <div className='flex gap-2'>
             <Link href="#about">
-              <Typography color='black' variant='h6'>About</Typography>
+              <Typography color='white' variant='h6'>About</Typography>
             </Link>
             <Link href="#car">
-              <Typography color='black' variant='h6'>Car</Typography>
+              <Typography color='white' variant='h6'>Car</Typography>
             </Link>
             <Link href="#contact">
-              <Typography color='black' variant='h6'>Contact</Typography>
+              <Typography color='white' variant='h6'>Contact</Typography>
             </Link>
           </div>
           {login ? (
