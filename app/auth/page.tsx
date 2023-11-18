@@ -31,6 +31,38 @@ const App = () => {
   const [isCreatedAccount, setIsCreatedAccount] = useState<boolean>(false);
 
   /**
+   * login
+   */
+  const handleSignIn = async () => {
+    try {
+      const accounts: any = await sdk?.connect();
+      const loginAccountId = accounts?.[0];
+
+      const isSuccessful = loginAccountId ? true : false;
+      if (!isSuccessful || loginAccountId === '') return;
+
+      const setValue: UsersCollectionType = {
+        accountId: loginAccountId,
+        chainId: (chainId as ChainEnum) ?? '',
+        name: name,
+        mail: mail,
+        isHavingNFT: false,
+      };
+      setUser({
+        ...setValue,
+        isLogin: true,
+      });
+
+      await addDoc(collection(db, DbCollectionEnum.USERS_COLLECTION), setValue);
+      router.push('/console');
+      setName('');
+      setMail('');
+    } catch (e) {
+      console.warn(`failed to connect..`, e);
+    }
+  };
+
+  /**
    * ウォレットへとの接続処理
    */
   const handleConnecting = async () => {
@@ -49,10 +81,9 @@ const App = () => {
         setIsCreatedAccount(true);
       });
 
-      if (!loginAccountId || !chainId) return;
       const setValue: UsersCollectionType = {
-        accountId: loginAccountId,
-        chainId: chainId as ChainEnum,
+        accountId: loginAccountId ?? '',
+        chainId: (chainId as ChainEnum) ?? '',
         name: name,
         mail: mail,
         isHavingNFT: user.isHavingNFT,
@@ -62,9 +93,6 @@ const App = () => {
         isLogin: true,
       });
 
-      if (!isCreatedAccount) {
-        await addDoc(collection(db, DbCollectionEnum.USERS_COLLECTION), setValue);
-      }
       router.push('/console');
     } catch (e) {
       console.warn(`failed to connect..`, e);
@@ -157,7 +185,7 @@ const App = () => {
             >
               <button
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                onClick={handleConnecting}
+                onClick={handleSignIn}
                 disabled={connecting}
               >
                 サインイン
