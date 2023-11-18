@@ -50,8 +50,7 @@ const ConsolePage: NextPage = () => {
     setIsSnipperOpen((prev) => !prev);
   };
 
-  // const isHavingNFT = user.isHavingNFT;
-  const isHavingNFT = true;
+  const isHavingNFT = user.isHavingNFT;
 
   return (
     <>
