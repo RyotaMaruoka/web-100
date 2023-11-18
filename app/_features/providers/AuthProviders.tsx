@@ -25,7 +25,6 @@ export const AuthProviders: FC<Props> = ({ children }) => {
   const handleConnecting = async () => {
     try {
       const accounts: any = await sdk?.connect();
-      console.log(accounts);
       const loginAccountId = accounts?.[0];
 
       const isSuccessful = loginAccountId ? true : false;
@@ -41,6 +40,7 @@ export const AuthProviders: FC<Props> = ({ children }) => {
           chainId: data.chainId,
           name: data.name,
           mail: data.mail,
+          isHavingNFT: data.isHavingNFT,
         });
       });
     } catch (e) {

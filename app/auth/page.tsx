@@ -55,6 +55,7 @@ const App = () => {
         chainId: chainId as ChainEnum,
         name: name,
         mail: mail,
+        isHavingNFT: user.isHavingNFT,
       };
       setUser({
         ...setValue,
@@ -64,7 +65,7 @@ const App = () => {
       if (!isCreatedAccount) {
         await addDoc(collection(db, DbCollectionEnum.USERS_COLLECTION), setValue);
       }
-      router.push('/');
+      router.push('/console');
     } catch (e) {
       console.warn(`failed to connect..`, e);
     }
