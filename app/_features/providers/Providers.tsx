@@ -3,7 +3,8 @@
 import { FC, ReactNode } from 'react';
 import { MUIProvider } from './MUIProvider';
 import { RecoilProvider } from './RecoilProvider';
-import { ThirdwebProviders } from './ThirdwebProviders';
+import { MetamaskProviders } from './MetaMaskProviders';
+import { AuthProviders } from './AuthProviders';
 
 type Props = {
   children: ReactNode;
@@ -12,9 +13,11 @@ type Props = {
 export const Providers: FC<Props> = ({ children }) => {
   return (
     <RecoilProvider>
-      <ThirdwebProviders>
-        <MUIProvider>{children}</MUIProvider>
-      </ThirdwebProviders>
+      <MetamaskProviders>
+        <MUIProvider>
+          <AuthProviders>{children}</AuthProviders>
+        </MUIProvider>
+      </MetamaskProviders>
     </RecoilProvider>
   );
 };
