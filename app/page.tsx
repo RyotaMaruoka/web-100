@@ -7,6 +7,8 @@ import About from './components/About';
 import Car from './components/Car';
 import Contact from './components/Contact';
 
+import Footer from './components/Footer';
+
 const Home: FC = () => {
   return (
     <div>
@@ -24,6 +26,7 @@ const Home: FC = () => {
           <Contact />
         </div> */}
       </div>
+      <Footer />
     </div>
   );
 };
